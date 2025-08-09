@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -119,4 +120,35 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+code [data-highlighted-line] {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.heading-link {
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.heading-link:hover {
+  color: oklch(0.696 0.17 162.48);
+}
+
+.heading-link::before {
+  content: "#";
+  position: absolute;
+  left: -1.5rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  color: oklch(0.556 0 0);
+}
+
+.dark .heading-link::before {
+  color: oklch(0.708 0 0);
+}
+
+.heading-link:hover::before {
+  opacity: 0.5;
 }
